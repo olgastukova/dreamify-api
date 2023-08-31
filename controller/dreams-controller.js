@@ -44,10 +44,24 @@ const add = (req, res) => {
             res.status(200).json(dream);
           });
       };
-     
+      const getAll = (req, res) => {
+        knex("dreams")
+          .select(
+            "dreams.id",
+            "dreams.dream_name",
+            "dreams.description",
+            "dreams.category"
+          )
+          .then((dreams) => {
+            res.status(200).json(dreams);
+          })
+          .catch(() => {
+            res.status(500).send("error");
+          });
+      };
 module.exports = {
   add,
-  getDream
-  
+  getDream,
+  getAll
 };
 
