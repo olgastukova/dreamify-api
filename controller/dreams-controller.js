@@ -28,7 +28,26 @@ const add = (req, res) => {
           .catch((err) => res.status(500).json(`Unable to create a dream`));
       };
 
-
+      const getDream = (req, res) => {
+        knex("dreams")
+          .select(
+            "dreams.id",
+            "dreams.dream_name",
+            "dreams.description",
+            "dreams.category"
+          )
+          .where({ "dreams.id": req.params.id })
+          .then((dream) => {
+            if (dream.length === 0) {
+              return res.status(404).send("ID not found");
+            }
+            res.status(200).json(dream);
+          });
+      };
+     
 module.exports = {
-  add
+  add,
+  getDream
+  
 };
+
