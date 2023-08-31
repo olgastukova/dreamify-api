@@ -7,7 +7,7 @@ router.route('/:id')
     // .put(dream.edit)
     
     router.route("/")
-    // .get(dream.getAll)
+    .get(dream.getAll)
     .post(dream.add);
 
 module.exports = router;
