@@ -19,7 +19,7 @@ app.post("/ask", async (req, res) => {
 
   try {
     if (prompt == null) {
-      throw new Error("Uh oh, no prompt was provided");
+      throw new Error("No prompt was provided");
     }
 
     const chatCompletion = await openai.chat.completions.create({
