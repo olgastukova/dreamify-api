@@ -3,8 +3,8 @@ const dream = require("../controller/dreams-controller");
 
 router.route('/:id')
     .get(dream.getDream)
-    // .delete(dream.dlt)
-    // .put(dream.edit)
+    .delete(dream.dlt)
+    .put(dream.edit)
     
     router.route("/")
     .get(dream.getAll)
