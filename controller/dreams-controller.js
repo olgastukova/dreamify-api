@@ -1,14 +1,17 @@
 const knex = require("knex")(require("../knexfile"));
 
 const add = (req, res) => {
-  const { dream_name, description, category } =
+  const { dream_name, description, category, isDone, image } =
     req.body;
    
   let newDream = {
     dream_name,
     description,
-    category
+    category,
+    isDone,
+    image
   };
+
   if (
     dream_name === undefined
   ) {
@@ -34,7 +37,9 @@ const add = (req, res) => {
             "dreams.id",
             "dreams.dream_name",
             "dreams.description",
-            "dreams.category"
+            "dreams.category",
+            "dreams.isDone",
+            "dreams.image"
           )
           .where({ "dreams.id": req.params.id })
           .then((dream) => {
@@ -50,7 +55,9 @@ const add = (req, res) => {
             "dreams.id",
             "dreams.dream_name",
             "dreams.description",
-            "dreams.category"
+            "dreams.category",
+            "dreams.isDone",
+            "dreams.image"
           )
           .then((dreams) => {
             res.status(200).json(dreams);
@@ -83,19 +90,23 @@ const add = (req, res) => {
         const {
           dream_name,
           description,
-          category
+          category,
+          isDone,
+          image
         } = req.body;
         const newDreamInfo = {
           dream_name,
           description,
-          category
+          category,
+          isDone,
+          image
         };
         if (
           !dream_name
         ) {
           return res.status(400).json("Please write your dream name");
         }
-      
+        console.log()
         knex("dreams")
           .where({ id: req.params.id })
           .then((dream) => {

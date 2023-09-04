@@ -31,9 +31,9 @@ app.post("/ask", async (req, res) => {
 
     const chatCompletion = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
-        messages: [{"role": "user", "content": prompt}],
+        messages: [{"role": "user", "content": "give me advice about"+prompt}],
       });
-    //   console.log(chatCompletion.choices[0].message);
+      console.log(chatCompletion.choices[0].message);
       return res.status(200).json(chatCompletion.choices[0].message)}
      
    catch (error) {
