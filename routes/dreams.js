@@ -10,6 +10,5 @@ router.route('/:id')
     .delete(dream.dlt)
     .put(dream.edit)
     
-// router.route('/:id/:ask')
 
 module.exports = router;
