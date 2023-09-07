@@ -124,6 +124,5 @@ module.exports = {
   add,
   getDream,
   getAll,
-  dlt,
-  edit,
+  dlt
 };
